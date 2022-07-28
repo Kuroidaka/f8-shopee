@@ -2,29 +2,78 @@
     --primary-color: rgb(254, 100, 51);
     --white-color: #fff;
     --black-color: #000;
-    --text-color: #333
-    
+    --text-color: #333;
+    --header-height: 120px;
+    --navbar-height: 40px;
+    --header_search_bar-height: calc(var(--header-height) - var(--navbar-height));
+    --header_search_icon-width: 50px;
+    --header_search_input-width: calc(var(--header_search_input-bar) - var(--header_search_icon-width) - 30px);
+    --header_search_input-bar: 850px;
+    --grid_row_width: 1200px;
+    --star_yellow: #FFCE3D;
 }
 *{
     box-sizing: inherit;
+    margin: 0;
 }
 
 .grid{
-    width: 1500px;
+    width: var(--grid_row_width);
     max-width: 100%;
-    margin: 0 auto;
+    margin: auto;
+    
+
+}
+
+/* TEST */
+
+.grid-row{
+    display: flex;
+    flex-wrap: wrap;
+   
+ 
+
+}
+.grid-row{
+
+}
+
+.grid-column-2{
+    
+    width: calc(var(--grid_row_width) * 2 / 12);
+}
+
+.grid-column-10{
+  
+    width: calc(var(--grid_row_width) * 10 / 12);
 }
 
 html{
-    font-size: 62.5%;
+    font-size: 14.5px;
     line-height: 1.6rem;
     font-family: 'Roboto', sans-serif;
-    font-size: 100%;
+
        
     
 }
 
+
 /* Animation */
+
+@keyframes HeaderNotifyGrowth{
+    from{
+        transform: scale(0);
+        opacity: 0;
+    }
+    to{
+        transform: scale(1);
+        opacity: 1;
+    }
+
+}
+
+
+
 @keyframes FadeIn {
     from{
         opacity: 0;
@@ -34,4 +83,155 @@ html{
         opacity: 1;
         transform: translateY(0)
     }
+}
+
+
+
+@keyframes Appear{
+    from{
+        transform: scale(--Appear-from);
+        opacity: 0;
+    }
+    to{
+        transform: scale(--Appear-to);
+        opacity: 1;
+    }
+}
+/* MODAL */
+.modal{
+    --Appear-from:0.7;
+    --Appear-to:1;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    animation: Appear linear 0.3s;
+    z-index: 800;
+}
+
+.btn{
+    cursor: pointer;
+    width: 190px;
+    height: 35px;
+    border: none;
+    background-color: #d3d3d3;
+    color: var(--text-color);
+    display: inline-flex;
+    border-radius: 2px;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+.btn:hover{
+    opacity: 0.7!important;
+}
+
+.s-btn{
+    width: 88px;
+    height: 34px;
+}
+
+.btn.btn--primary{
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+.fb-icon{
+    color: var(--white-color);
+    font-size: 25px;
+}
+.gg-icon{
+    color: var(--black-color);
+    font-size: 25px;
+}
+
+
+/* padding margin */
+.mgr-16{
+    margin-right: 16px;
+}
+.ml-10{
+    margin-left: 10px;
+}
+.mr-10{
+    margin-right: 10px;
+}
+
+.ml-20{
+    margin-left: 20px;
+}
+
+.separate::after{
+    width: 1px;
+    height: 20px;
+    content: "";
+    border-left: 2px solid rgba(205, 103, 103, 0.5);
+    margin: 10px;
+
+
+}
+
+/* icon*/
+.cart-icon{
+    color: var(--white-color);
+    font-size: 22px;
+    padding-top: 15px;
+    cursor: pointer;
+    z-index: 999;
+}
+
+.search-icon{
+    color: var(--white-color);
+    margin: auto;
+   
+    
+}
+
+
+/* yêu thích */
+
+.label_like-form{
+    position: absolute;
+    font-size: 0.86rem;
+    content: "";
+    text-align: center;
+    width: 63px;
+    height: auto;
+    color: var(--primary-color);
+    background-color: currentColor;
+    z-index: 10;
+    top: 12px;
+    left: -4px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    display: none;
+}
+
+.label_like-form.active{
+    display: block;
+}
+
+.label_like-form::before{
+    content: "";
+    border-top: 4px solid currentColor;
+    border-left: 4px solid transparent;
+    bottom: -4px;
+    left: 0px;
+    filter: brightness(60%);
+    position: absolute;
+    
+
+}
+
+.label_like-form p{
+    margin: auto;
+    color: var(--white-color);
+    line-height: 1.1rem;
+}
+
+.fa-star.active{
+    color: red;
 }
